@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1020</width><height>660</height></rect>
+  </property>
+  <property name="minimumSize">
+   <size><width>1000</width><height>620</height></size>
+  </property>
+  <property name="windowTitle">
+   <string>Магазин обуви</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="centralLayout">
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+    <property name="spacing"><number>0</number></property>
+
+    <!-- ═══ Шапка: логотип + заголовок + ФИО + Выйти ═══ -->
+    <item>
+     <widget class="QWidget" name="header_widget">
+      <property name="minimumSize"><size><width>0</width><height>50</height></size></property>
+      <layout class="QHBoxLayout" name="headerLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <item>
+        <widget class="QLabel" name="logo_label">
+         <property name="text"><string/></property>
+         <property name="maximumSize"><size><width>50</width><height>50</height></size></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="page_title">
+         <property name="text"><string>Список товаров</string></property>
+         <property name="font">
+          <font><pointsize>14</pointsize><bold>true</bold></font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="headerSpacer">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="fio_label">
+         <property name="text"><string/></property>
+         <property name="font">
+          <font><pointsize>11</pointsize></font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logout_btn">
+         <property name="text"><string>Выйти</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ═══ QStackedWidget ═══ -->
+    <item>
+     <widget class="QStackedWidget" name="stacked_widget">
+      <property name="currentIndex"><number>0</number></property>
+
+      <!-- ════ Страница товаров (0) ════ -->
+      <widget class="QWidget" name="products_page">
+       <layout class="QVBoxLayout" name="prodLayout">
+        <property name="leftMargin"><number>12</number></property>
+        <property name="topMargin"><number>8</number></property>
+        <property name="rightMargin"><number>12</number></property>
+        <property name="bottomMargin"><number>8</number></property>
+
+        <!-- Панель фильтров -->
+        <item>
+         <widget class="QWidget" name="filter_widget">
+          <layout class="QHBoxLayout" name="filterLayout">
+           <property name="leftMargin"><number>8</number></property>
+           <property name="topMargin"><number>6</number></property>
+           <property name="rightMargin"><number>8</number></property>
+           <property name="bottomMargin"><number>6</number></property>
+           <item>
+            <widget class="QLabel" name="searchLbl">
+             <property name="text"><string>Поиск:</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="search_input">
+             <property name="placeholderText"><string>По всем полям…</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="supplierLbl">
+             <property name="text"><string>Поставщик:</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="supplier_filter"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="sortLbl">
+             <property name="text"><string>Сортировка:</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="sort_combo">
+             <item><property name="text"><string>Без сортировки</string></property></item>
+             <item><property name="text"><string>По кол-ву на складе ↑</string></property></item>
+             <item><property name="text"><string>По кол-ву на складе ↓</string></property></item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Список карточек товаров -->
+        <item>
+         <widget class="QListWidget" name="products_list">
+          <property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property>
+          <property name="horizontalScrollBarPolicy"><enum>Qt::ScrollBarAlwaysOff</enum></property>
+          <property name="verticalScrollMode"><enum>QAbstractItemView::ScrollPerPixel</enum></property>
+         </widget>
+        </item>
+
+        <!-- Нижняя панель: счётчик + кнопки -->
+        <item>
+         <layout class="QHBoxLayout" name="prodBtnsLayout">
+          <item>
+           <widget class="QLabel" name="products_count">
+            <property name="text"><string/></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="prodSpacer1">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="add_product_btn">
+            <property name="text"><string>Добавить товар</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="delete_product_btn">
+            <property name="text"><string>Удалить товар</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="prodSpacer2">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="orders_btn">
+            <property name="text"><string>Заказы →</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ════ Страница заказов (1) ════ -->
+      <widget class="QWidget" name="orders_page">
+       <layout class="QVBoxLayout" name="ordLayout">
+        <property name="leftMargin"><number>12</number></property>
+        <property name="topMargin"><number>8</number></property>
+        <property name="rightMargin"><number>12</number></property>
+        <property name="bottomMargin"><number>8</number></property>
+        <item>
+         <layout class="QHBoxLayout" name="ordBtnsLayout">
+          <item>
+           <widget class="QPushButton" name="back_btn">
+            <property name="text"><string>← Назад</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="add_order_btn">
+            <property name="text"><string>Добавить заказ</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="delete_order_btn">
+            <property name="text"><string>Удалить заказ</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="ordSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="orders_table">
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+          <property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <attribute name="horizontalHeaderStretchLastSection"><bool>true</bool></attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="orders_count">
+          <property name="text"><string/></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
